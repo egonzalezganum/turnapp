@@ -9,22 +9,23 @@
 
         <h1>Crear Usuario</h1>
 
-        <form th:action="@{/user/save}" method="POST" >
+        <form th:action="@{/user/save}" method="POST" th:object="${user}">
             <h3>Inserte los siguientes campos</h3>
-
+            <input hidden th:field="*{id}"> 
             <label style="margin-left:20px">Nombre</label>
-            <input type="text" name="name" style="margin-left:20px"> 
+            <input type="text" th:field="*{name}" style="margin-left:20px"> 
             <br>
             <br>
             <label style="margin-left:20px">Apellido</label>
-            <input type="text" name="lastName"  style="margin-left:20px"> 
+            <input type="text" th:field="*{lastName}"  style="margin-left:20px"> 
             <br>
             <br>
             <label style="margin-left:20px">Edad</label>
-            <input type="number" name="age"  style="margin-left:20px"> 
+            <input type="number" th:field="*{age}"  style="margin-left:20px"> 
             <br>
             <br>
             <input type="submit"> 
+
         </form>
 
     </body>

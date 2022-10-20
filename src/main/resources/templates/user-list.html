@@ -6,8 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-
         <h1> Lista de usuarios </h1>
+        <button> 
+            <a th:href="@{/user/form}">
+                CREAR USUARIO
+            </a>
+        </button>
+            <p th:if="${error}" th:text="${error}" style="color: red"></p>
+            <p th:if="${succes}" th:text="${succes}" style="color: green"></p>
         <table>
             <thead>
                 <tr>
@@ -15,6 +21,7 @@
                     <th> Nombre</th>
                     <th> Apellido</th>
                     <th> Edad</th>
+                    <th> Acciones </th>
                 </tr>
             </thead>
             <tbody>
@@ -23,22 +30,15 @@
                     <td th:text="${user.name}" ></td>
                     <td th:text="${user.lastName}" ></td>
                     <td th:text="${user.age}" ></td>
+                    <td>
+                        <button> <a th:href ="@{/user/delete}+'?id='+${user.id}"> Eliminar </a></button>
+                    </td>
+                    <td>
+                        <button> <a th:href ="@{/user/form}+'?id='+${user.id}"> Modificar</a></button>
+                    </td>
                 </tr>
-
-                <!--<p th:if ="${user.isEmpty()}">No hay usuarios para mostrar</p>-->
-
             </tbody>
+            <p th:if="${user.isEmpty}">No hay usuarios para mostrar</p>
         </table>
-        <br>
-        <br>
-        <br>
-        <button> 
-                <a th:href="@{/user/form}">
-                    CREAR USUARIO
-                </a>
-            </button>
-
-
-
-</body>
+    </body>
 </html>
