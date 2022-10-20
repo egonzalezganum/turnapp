@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>LISTA DE USUARIOS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <h1> Lista de usuarios </h1>
+
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th> N°</th>
+                    <th> Nombre</th>
+                    <th> Apellido</th>
+                    <th> Edad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each = "user,iterator : ${user}">
+                    <td th:text="${iterator.index+1}" ></td>
+                    <td th:text="${user.name}" ></td>
+                    <td th:text="${user.lastName}" ></td>
+                    <td th:text="${user.age}" ></td>
+                </tr>
+
+                <!--<p th:if ="${user.isEmpty()}">No hay usuarios para mostrar</p>-->
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <button> 
+                <a th:href="@{/user/form}">
+                    CREAR USUARIO
+                </a>
+            </button>
+
+
+
+</body>
+</html>
