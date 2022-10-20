@@ -1,5 +1,6 @@
 package com.turnApp.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,10 +8,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class User {
-    
+
     @Id
-    @GeneratedValue(generator = "uuid" )
-    @GenericGenerator(name = "uuid", strategy ="uuid2")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String Id;
     private String name;
     private String lastName;
@@ -58,5 +59,4 @@ public class User {
         this.age = age;
     }
 
-    
 }
