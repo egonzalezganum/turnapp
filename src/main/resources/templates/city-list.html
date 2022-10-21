@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>LISTA DE USUARIOS</title>
+        <title>LISTA DE CIUDADES</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1> Lista de usuarios </h1>
+        <h1> Lista de ciudades</h1>
         <button> 
-            <a th:href="@{/user/form}">
-                CREAR USUARIO
+            <a th:href="@{/city/form}">
+                CREAR CIUDAD
             </a>
         </button>
         <a th:href="@{/}" ><h4>VOLVER</h4></a>
@@ -18,8 +18,8 @@
         <table>
             <br>
             <br>
-            <form th:action="@{/user/list}" method="GET">
-                <input type="text" name="q" placeholder="buscar usuario" />
+            <form th:action="@{/city/list}" method="GET">
+                <input type="text" name="c" placeholder="buscar ciudad" />
                 <input type="submit" value="Buscar" name="Buscar" />                
             </form>
             <br>
@@ -28,28 +28,22 @@
                 <tr>
                     <th> N°</th>
                     <th> Nombre</th>
-                    <th> Apellido</th>
-                    <th> Edad</th>
-                    <th> Ciudad </th>
                     <th> Acciones </th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each = "user,iterator : ${user}">
+                <tr th:each = "city,iterator : ${city}">
                     <td th:text="${iterator.index+1}" ></td>
-                    <td th:text="${user.name}" ></td>
-                    <td th:text="${user.lastName}" ></td>
-                    <td th:text="${user.age}" ></td>
-                    <td th:text="${user.city} == null ? 'Campo no completado' : ${user.city.cityName}" ></td>
+                    <td th:text="${city.cityName}" ></td>
                     <td>
-                        <button> <a th:href ="@{/user/delete}+'?id='+${user.id}"> Eliminar </a></button>
+                        <button> <a th:href ="@{/city/delete}+'?id='+${city.id}"> Eliminar </a></button>
                     </td>
                     <td>
-                        <button> <a th:href ="@{/user/form}+'?id='+${user.id}"> Modificar</a></button>
+                        <button> <a th:href ="@{/city/form}+'?id='+${city.id}"> Modificar</a></button>
                     </td>
                 </tr>
             </tbody>
-            <p th:if="${user.isEmpty}">No hay usuarios para mostrar</p>
+            <p th:if="${city.isEmpty}">No hay ciudades para mostrar</p>
         </table>
     </body>
 </html>

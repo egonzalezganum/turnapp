@@ -1,12 +1,14 @@
 package com.turnApp.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -15,16 +17,8 @@ public class User {
     private String name;
     private String lastName;
     private Integer age;
-
-    public User() {
-    }
-
-    public User(String Id, String name, String lastName, Integer age) {
-        this.Id = Id;
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-    }
+    @ManyToOne
+    private City city;
 
     public String getId() {
         return Id;
@@ -56,6 +50,14 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
 }

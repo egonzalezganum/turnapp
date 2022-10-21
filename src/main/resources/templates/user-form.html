@@ -8,6 +8,7 @@
     <body>
 
         <h1>Crear Usuario</h1>
+        <a th:href="@{/}" ><h4>VOLVER</h4></a>
 
         <form th:action="@{/user/save}" method="POST" th:object="${user}">
             <h3>Inserte los siguientes campos</h3>
@@ -22,6 +23,10 @@
             <br>
             <label style="margin-left:20px">Edad</label>
             <input type="number" th:field="*{age}"  style="margin-left:20px"> 
+            <br>
+            <br>
+            <label style="margin-left:20px">Ciudad</label>
+            <input type="text" th:field="*{city.cityName}"  style="margin-left:20px"> 
             <br>
             <br>
             <input type="submit"> 

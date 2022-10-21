@@ -1,7 +1,7 @@
 package com.turnApp.controllers;
 
-import com.turnApp.entities.User;
-import com.turnApp.services.UserService;
+import com.turnApp.entities.City;
+import com.turnApp.services.CityService;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,52 +14,52 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/city")
+public class CityController {
 
     @Autowired
-    private UserService userService;
+    private CityService cityService;
 
     @GetMapping("/list")
-    public String listUsers(Model model, @RequestParam(required = false) String q) {
+    public String listCities(Model model, @RequestParam(required = false) String q) {
         if (q != null) {
-            model.addAttribute("user", userService.listByQ(q));
+            model.addAttribute("city", cityService.listAll(q));
         } else {
-            model.addAttribute("user", userService.listAll());
+            model.addAttribute("city", cityService.listAll());
         }
-        return "user-list";
+        return "city-list";
     }
 
     @GetMapping("/form")
-    public String createUser(Model model, @RequestParam(required = false) String id) {
+    public String createCity(Model model, @RequestParam(required = false) String id) {
         if (id != null) {
-            Optional<User> optional = userService.findById(id);
+            Optional<City> optional = cityService.findById(id);
             if (optional.isPresent()) {
-                model.addAttribute("user", optional.get());
+                model.addAttribute("city", optional.get());
             } else {
-                return "redirect:/user/list";
+                return "redirect:/city/list";
             }
         } else {
-            model.addAttribute("user", new User());
+            model.addAttribute("city", new City());
         }
-        return "user-form";
+        return "city-form";
     }
 
     @PostMapping("/save")
-    public String saveUser(Model model, RedirectAttributes redirect, @ModelAttribute User user) {
+    public String saveCity(Model model, RedirectAttributes redirect, @ModelAttribute City city) {
         try {
-            userService.save(user);
+            cityService.save(city);
             redirect.addFlashAttribute("succes", "¡Usuario creado con exito!");
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
         }
-        return "redirect:/user/list";
+        return "redirect:/city/list";
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam(required = true) String id) {
-        userService.deleteById(id);
-        return "redirect:/user/list";
+    public String deleteCity(@RequestParam(required = true) String id) {
+        cityService.deleteById(id);
+        return "redirect:/city/list";
     }
 
 }
