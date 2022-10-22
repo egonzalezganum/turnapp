@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>CREAR USUARIO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <h1>Crear Usuario</h1>
+        <a th:href="@{/}" ><h4>VOLVER</h4></a>
+
+        <form th:action="@{/person/save}" method="POST" th:object="${person}">
+            <h3>Inserte los siguientes campos</h3>
+            <input hidden th:field="*{id}"> 
+            <label style="margin-left:20px">Nombre</label>
+            <input type="text" th:field="*{name}" style="margin-left:20px"> 
+            <br>
+            <br>
+            <label style="margin-left:20px">Apellido</label>
+            <input type="text" th:field="*{lastName}"  style="margin-left:20px"> 
+            <br>
+            <br>
+            <label style="margin-left:20px">Edad</label>
+            <input type="number" th:field="*{age}"  style="margin-left:20px"> 
+            <br>
+            <br>
+            <label style="margin-left:20px">Ciudad</label>
+            <select th:field="*{city.id}">
+                <option th:each="c:${cities}" th:text="${c.cityName}" th:value="${c.id}">  </option>
+            </select>
+            <br>
+            <br>
+            <input type="submit"> 
+
+        </form>
+
+    </body>
+</html>

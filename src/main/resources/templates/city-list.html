@@ -19,7 +19,7 @@
             <br>
             <br>
             <form th:action="@{/city/list}" method="GET">
-                <input type="text" name="c" placeholder="buscar ciudad" />
+                <input type="text" name="q" placeholder="buscar ciudad" />
                 <input type="submit" value="Buscar" name="Buscar" />                
             </form>
             <br>
@@ -32,14 +32,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each = "city,iterator : ${city}">
+                <tr th:each = "c,iterator : ${city}">
                     <td th:text="${iterator.index+1}" ></td>
-                    <td th:text="${city.cityName}" ></td>
+                    <td th:text="${c.cityName}" ></td>
                     <td>
-                        <button> <a th:href ="@{/city/delete}+'?id='+${city.id}"> Eliminar </a></button>
+                        <button> <a th:href ="@{/city/delete}+'?id='+${c.id}"> Eliminar </a></button>
                     </td>
                     <td>
-                        <button> <a th:href ="@{/city/form}+'?id='+${city.id}"> Modificar</a></button>
+                        <button> <a th:href ="@{/city/form}+'?id='+${c.id}"> Modificar</a></button>
                     </td>
                 </tr>
             </tbody>

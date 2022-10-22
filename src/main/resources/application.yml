@@ -1,4 +1,33 @@
 spring:
+    datasource: 
+        url: jdbc:mysql://localhost:3306/turnapp?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver 
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+            dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
+    thymeleaf:
+        cache: false
+    servlet:
+        multipart:
+            max-file-size: 15MB
+    main: 
+        allow-circular-references: true
+server:
+    error:
+        whitelabel:
+            enabled: false
+    servlet:
+        session:
+            cookie:
+                http-only: true
+            tracking-modes:
+                - cookie           
 #  mail: 
 #    host: smtp.gmail.com
 #    port: 587
@@ -11,31 +40,3 @@ spring:
 #                    enable: true
 #    username: resurrected.web@gmail.com
 #    password: saxctijevcsokikj
-
-  datasource: 
-    url: jdbc:mysql://localhost:3306/turnapp?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
-  thymeleaf:
-    cache: false
-  servlet:
-    multipart:
-      max-file-size: 15MB
-server:
-  error:
-    whitelabel:
-      enabled: false
-  servlet:
-    session:
-      cookie:
-        http-only: true
-      tracking-modes:
-      - cookie

@@ -49,7 +49,7 @@ public class CityController {
     public String saveCity(Model model, RedirectAttributes redirect, @ModelAttribute City city) {
         try {
             cityService.save(city);
-            redirect.addFlashAttribute("succes", "¡Usuario creado con exito!");
+            redirect.addFlashAttribute("succes", "¡Ciudad creada con exito!");
         } catch (Exception e) {
             redirect.addFlashAttribute("error", e.getMessage());
         }

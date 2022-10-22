@@ -8,7 +8,7 @@
     <body>
         <h1> Lista de usuarios </h1>
         <button> 
-            <a th:href="@{/user/form}">
+            <a th:href="@{/person/form}">
                 CREAR USUARIO
             </a>
         </button>
@@ -18,7 +18,7 @@
         <table>
             <br>
             <br>
-            <form th:action="@{/user/list}" method="GET">
+            <form th:action="@{/person/list}" method="GET">
                 <input type="text" name="q" placeholder="buscar usuario" />
                 <input type="submit" value="Buscar" name="Buscar" />                
             </form>
@@ -35,21 +35,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each = "user,iterator : ${user}">
+                <tr th:each = "p,iterator : ${person}">
                     <td th:text="${iterator.index+1}" ></td>
-                    <td th:text="${user.name}" ></td>
-                    <td th:text="${user.lastName}" ></td>
-                    <td th:text="${user.age}" ></td>
-                    <td th:text="${user.city} == null ? 'Campo no completado' : ${user.city.cityName}" ></td>
+                    <td th:text="${p.name}" ></td>
+                    <td th:text="${p.lastName}" ></td>
+                    <td th:text="${p.age}" ></td>
+                    <td th:text="${p.city} == null ? 'Campo no completado' : ${p.city.cityName}" ></td>
                     <td>
-                        <button> <a th:href ="@{/user/delete}+'?id='+${user.id}"> Eliminar </a></button>
+                        <button> <a th:href ="@{/person/delete}+'?id='+${p.id}"> Eliminar </a></button>
                     </td>
                     <td>
-                        <button> <a th:href ="@{/user/form}+'?id='+${user.id}"> Modificar</a></button>
+                        <button> <a th:href ="@{/person/form}+'?id='+${p.id}"> Modificar</a></button>
                     </td>
                 </tr>
             </tbody>
-            <p th:if="${user.isEmpty}">No hay usuarios para mostrar</p>
+            <p th:if="${person.isEmpty}">No hay usuarios para mostrar</p>
         </table>
     </body>
 </html>
